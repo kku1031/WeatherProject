@@ -61,6 +61,11 @@ public class DiaryService {
         diaryRepository.save(nowDiary);
     }
 
+    //삭제
+    public void deleteDiary(LocalDate date) {
+        diaryRepository.deleteAllByDate(date);
+    }
+
     // open weather map API에서 데이터 받아오기
     private String getWeatherString() {
         String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Daegu&appid=" + apiKey;
