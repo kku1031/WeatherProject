@@ -2,13 +2,12 @@ package zerobase.weather.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import zerobase.weather.domain.Diary;
 import zerobase.weather.service.DiaryService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController //기본Controller 기능 + http상태코드 지정해서 내려줄수 있게함.
 @RequiredArgsConstructor
@@ -20,4 +19,18 @@ public class DiaryController {
     void createDiary(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @RequestBody String text) {
         diaryService.createDiary(date, text);
     }
+
+    //조회 : 날짜 정도만 받아오면됨
+    @GetMapping("/read/diary")
+    List<Diary> readDiary(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return diaryService.readDiary(date);
+    }
+
+    //조회 : 해당 기간의 일기(몇월 며칠 부터 몇월 며칠까지)
+    @GetMapping("/read/diaries")
+    List<Diary> readDiaries(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+                            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        return diaryService.readDiaries(startDate, endDate);
+    }
 }
+
