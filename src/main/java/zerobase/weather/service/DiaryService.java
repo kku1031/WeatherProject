@@ -54,6 +54,13 @@ public class DiaryService {
         return diaryRepository.findAllByDateBetween(startDate, endDate);
     }
 
+    //수정
+    public void updateDiary(LocalDate date, String text) {
+        Diary nowDiary = diaryRepository.getFirstByDate(date); //그 날짜에 해당하는 일기 하나만 반환.
+        nowDiary.setText(text);
+        diaryRepository.save(nowDiary);
+    }
+
     // open weather map API에서 데이터 받아오기
     private String getWeatherString() {
         String apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Daegu&appid=" + apiKey;
@@ -108,7 +115,6 @@ public class DiaryService {
 
         return resultMap;
     }
-
 
 
 }
