@@ -1,6 +1,6 @@
 package zerobase.weather.controller;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,7 +11,7 @@ import zerobase.weather.service.DiaryService;
 import java.time.LocalDate;
 
 @RestController //기본Controller 기능 + http상태코드 지정해서 내려줄수 있게함.
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DiaryController {
     private final DiaryService diaryService;
 
