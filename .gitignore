@@ -1,0 +1,39 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+#인텔리제이가 아니라 Eclipse를 쓸 수도 있고, 다른 버전의 인텔리제이 일 수도 있으니까 그 사람의 환경에 맞추기 때문에 .idea는 필요없음.
+#보통 빌드한 결과물 이나 내 환경에 필요 없는 설정 .gitignore에!
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/

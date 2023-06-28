@@ -1,0 +1,40 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.13'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'zerobase'			//version = '1.0.0-SNAPSHOT'처럼 수정가능
+version = '0.0.1-SNAPSHOT'	//weather라는 스프링 어플리케이션의 버전 (처음이니까 0.0.1-SNAPSHOT(갓나온 버전))
+
+//자바 소스 버전
+java {
+	sourceCompatibility = '1.8'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+//라이브러리를 받아 오는 저장소. mavenCentral(가장큼) : 사내 저장소를 사용할 경우, 사내 저장소 이름으로 나옴
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'			//걍 다
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'			//jdbc library
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'		//jpa library
+	compileOnly 'org.projectlombok:lombok'										//컴파일 시점에만 library 사용
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'		//test 시점에만 library 사용
+	runtimeOnly 'mysql:mysql-connector-java:8.0.26'								//나의 경우 버전까지 명시해줘야 오류안났음.
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
