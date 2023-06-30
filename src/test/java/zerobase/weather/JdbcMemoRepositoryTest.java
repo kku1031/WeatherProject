@@ -13,8 +13,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional //DB Test시 자주 사용, TEST코드 진행하면서 데이터 바뀌는 것 방지
-// @Transactional: 활성화가 되있으면 테스트를 돌리고도 원상복구 됨.
+@Transactional
 class JdbcMemoRepositoryTest {
 
     @Autowired
