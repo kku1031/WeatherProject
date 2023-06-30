@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor //빈 다이어리에 값을 넣기 위해
 @Entity
-@AllArgsConstructor
 public class Diary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

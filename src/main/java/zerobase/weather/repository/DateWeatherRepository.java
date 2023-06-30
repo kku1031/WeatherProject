@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface DateWeatherRepository extends JpaRepository<DateWeather, LocalDate> {
     //date에 따라서 그날의 dateWeather값 가져옴
-    List<DateWeather> findAllbyDate(LocalDate date);
-
+    List<DateWeather> findAllByDate(LocalDate localDate);
 }
