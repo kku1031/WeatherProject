@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import zerobase.weather.WeatherApplication;
 import zerobase.weather.domain.DateWeather;
 import zerobase.weather.domain.Diary;
+import zerobase.weather.error.InvalidDate;
 import zerobase.weather.repository.DateWeatherRepository;
 import zerobase.weather.repository.DiaryRepository;
 
@@ -90,10 +91,13 @@ public class DiaryService {
     }
 
     //조회
+    //일기 값 -> DB 조회 -> service -> repository -> date 값 기준 그날 일기 가져와야함 -> Repository
     @Transactional(readOnly = true) //조회부분 성능 향상.
     public List<Diary> readDiary(LocalDate date) {
-        //일기 값 -> DB 조회 -> service -> repository -> date 값 기준 그날 일기 가져와야함 -> Repository
-        logger.debug("read diary");
+        //year값과 day 값을 이용해서 LocalDate 객체 생성.
+//        if(date.isAfter(LocalDate.ofYearDay(3050,1))) {
+//            throw new InvalidDate();
+//        }
         return diaryRepository.findAllByDate(date);
     }
 
